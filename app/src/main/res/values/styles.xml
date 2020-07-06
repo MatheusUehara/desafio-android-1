@@ -14,4 +14,20 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="ActionButton" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="height">@dimen/button_height</item>
+    </style>
+
+    <style name="ActionButton.Primary" parent="ActionButton">
+        <item name="android:background">@drawable/button_background_primary</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="ActionButton.Secundary" parent="ActionButton">
+        <item name="android:background">@drawable/button_background_secundary</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>
