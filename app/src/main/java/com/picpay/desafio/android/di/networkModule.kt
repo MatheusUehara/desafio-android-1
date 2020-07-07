@@ -4,11 +4,11 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.util.Log
-import com.google.gson.GsonBuilder
 import com.picpay.desafio.android.BuildConfig
 import com.picpay.desafio.android.api.PicPayService
 import com.picpay.desafio.android.repository.PicPayRepository
 import com.picpay.desafio.android.repository.PicPayRepositoryImpl
+import com.picpay.desafio.android.util.LiveDataCallAdapterFactory
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -26,10 +26,6 @@ private const val CACHE_SIZE = (10 * 1024 * 1024).toLong()
 private const val CACHE_TIME = 60 * 60 * 24
 
 val networkModule = module {
-
-    single {
-        GsonBuilder().create()
-    }
 
     single<HttpLoggingInterceptor> {
         HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
@@ -83,7 +79,8 @@ val networkModule = module {
         Retrofit.Builder()
             .client(get())
             .baseUrl(BuildConfig.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create(get()))
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .build()
     }
 

@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.view
+package com.picpay.desafio.android.view.contact
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +8,7 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_item_user.view.*
 
-class UserListItemViewHolder(
+class ContactListItemViewHolder(
     itemView: View
 ) : RecyclerView.ViewHolder(itemView) {
 
