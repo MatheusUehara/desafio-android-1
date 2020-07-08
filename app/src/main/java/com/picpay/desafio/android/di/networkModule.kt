@@ -24,6 +24,7 @@ private const val CONNECTION_TIMEOUT = 15L
 private const val READ_TIMEOUT = 30L
 private const val CACHE_SIZE = (10 * 1024 * 1024).toLong()
 private const val CACHE_TIME = 60 * 60 * 24
+const val PROPERTY_BASE_URL = "PROPERTY_BASE_URL"
 
 val networkModule = module {
 
@@ -76,9 +77,10 @@ val networkModule = module {
     }
 
     single<Retrofit> {
+        val baseUrl = getProperty<String>(PROPERTY_BASE_URL)
         Retrofit.Builder()
             .client(get())
-            .baseUrl(BuildConfig.BASE_URL)
+            .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .build()

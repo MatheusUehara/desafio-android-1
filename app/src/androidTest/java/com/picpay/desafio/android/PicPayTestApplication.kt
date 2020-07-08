@@ -5,15 +5,18 @@ import com.picpay.desafio.android.di.PROPERTY_BASE_URL
 import com.picpay.desafio.android.di.networkModule
 import com.picpay.desafio.android.di.userModule
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
-class PicpayApplication : Application() {
+class PicPayTestApplication : Application() {
+
     override fun onCreate() {
         super.onCreate()
         startKoin {
-            androidContext(this@PicpayApplication)
+            androidLogger()
+            androidContext(this@PicPayTestApplication)
             modules(listOf(networkModule, userModule))
-            properties(mapOf(PROPERTY_BASE_URL to BuildConfig.BASE_URL))
+            properties(mapOf(PROPERTY_BASE_URL to "http://localhost:8080/"))
         }
     }
 }

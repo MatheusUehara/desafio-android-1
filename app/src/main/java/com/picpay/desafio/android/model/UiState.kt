@@ -17,7 +17,7 @@ sealed class UiState<in T> {
                     UiError<T>(ErrorData(throwable, code, errorResponse))
                 }
                 else -> {
-                    UiError<T>(ErrorData(Throwable("Unexpected Error")))
+                    UiError<T>(ErrorData(throwable))
                 }
             }
         }
